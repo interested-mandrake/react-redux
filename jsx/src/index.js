@@ -8,7 +8,20 @@ import ReactDOM from 'react-dom';
     return <div>Hi there!</div>
 }*/
 const App = () => {  // this uses an ES2015 arrow function
-    return <div>Hi there!</div>
+    const buttonText = {text: 'click me'}; // create a javascript object with a text property
+    //const style = {backgroundColor: 'blue', color: 'white'}; // it would be valid to to use this object in jsx tag below like <button style={style}>
+
+    return (
+        <div>
+            <label className="label" htmlFor="name">Enter name:</label>
+            <input id="name"/>
+            <button style={{backgroundColor: 'blue', color: 'white'}}>
+                {buttonText.text}
+            </button>
+
+        </div>  
+    );
+  
 }
 
 // take the react component and show it on the screen
