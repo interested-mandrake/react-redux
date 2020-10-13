@@ -1,21 +1,19 @@
 import React from 'react';
-import faker from 'faker';
 
-const CommentDetail = (props) => { //we pass props in as a function argument
-    console.log(props);
+const CommentDetail = props => { //we pass props in as a function argument
     return (
         <div className="comment">
                 <a href="/" className="avatar">
-                    <img alt="avatar" src={faker.image.avatar()}/>
+                    <img alt="avatar" src={props.avatar}/>
                 </a>
                 <div className="content">
                     <a href="/" className="author">
                         {props.author} {/*access the prop*/}
                     </a>
                     <div className="metadata">
-                        <span className="date">Today at 6:00PM</span>
+                        <span className="date">{props.timeAgo}</span>
                     </div>
-                    <div className="text">Nice blog post!</div>
+                    <div className="text">{props.commentText}</div>
                 </div>
             </div>
     );
