@@ -19,13 +19,15 @@ class App extends React.Component{
     } 
    
     render(){     
-        return (
-            <div>
-                Latitude: {this.state.latitude}
-                <br />
-                Error: {this.state.errorMessage}
-            </div>
-        );
+        if(this.state.errorMessage && !this.state.latitude){ // if state has an error message and does not have a latitude property
+            return <div>Error: {this.state.errorMessage}</div>
+        }
+
+        if(!this.state.errorMessage && this.state.latitude){ 
+            return <div>Latitude: {this.state.latitude}</div>
+        }
+        
+        return <div>Loading...</div>
     }
 } 
 
