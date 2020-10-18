@@ -8,13 +8,19 @@ import ReactDOM from 'react-dom';
 // of re-rendering or telling the App component to pause its rendering
 // process
 class App extends React.Component{
-    render(){
+   constructor(props) { // in react, constructor is called with props object
+        super(props); // construct the parent
+
+        this.state = { latitude: null }; // set state equal to an object
+
         window.navigator.geolocation.getCurrentPosition(
             (position) => console.log(position), //success fallback
             (err) => console.log(err) //error falback
-        )
-        
-        return <div>Latitude: </div>;
+        );
+   } 
+   
+    render(){     
+        return <div>Latitude: {this.state.latitude}</div>;
     }
 }
 
