@@ -18,6 +18,14 @@ class App extends React.Component{
            // after exiting the constructor method
     } 
    
+    componentDidMount(){
+        console.log("The component was rendered to the screen.")
+    }
+
+    componentDidUpdate(){
+        console.log("The component was updated - it re-rendered");
+    }
+
     render(){     
         if(this.state.errorMessage && !this.state.latitude){ // if state has an error message and does not have a latitude property
             return <div>Error: {this.state.errorMessage}</div>
