@@ -1,5 +1,16 @@
 import React from 'react';
 
+const seasonConfig = {
+    summer: {
+        text: 'Let\'s hit the beach!',
+        iconName: 'sun'
+    },
+    winter: {
+        text: 'burr, it is chilldy',
+        iconName: 'snowflake'
+    }
+}
+
 const getSeason = (latitude, month) => {
     if (month > 2 && month < 9) {
         return latitude > 0 ? 'summer' : 'winter'; //js ternary expression
@@ -10,18 +21,17 @@ const getSeason = (latitude, month) => {
 
 const SeasonDisplay = (props) => {
     const season = getSeason(props.latitude, new Date().getMonth());
-    const icon = season === 'winter' ? 'snowflake' : 'sun';
-    const icon2 = 'winter';
+    const { text, iconName } = seasonConfig[season] // get object with name season from object of objects, seasonConfig
     
 
     return ( // we use curly braces any time referencing javascript variable, but we can also put any javascript expression in here!
     <div>
-        <i className={`${icon} icon`} /> 
-        {/* the line above takes the value of the variable 'icon' and places it into the string 'icon' */}
+        <i className={`massive ${iconName} icon`} /> 
+        {/* the line above takes the value of the object 'iconName' and places it into the string 'icon' */}
         {/* basically we need to do this because we cannot pass a javascript variable into className, it must explicitly be a string. the technique we are using above is called 'template literals' */}
         <h1>{season === 'winter' ? 'Burr, it is chilly' : 'Let\'s hit the beach'} 
         </h1>
-        <i className={`${icon} icon`} />
+        <i className={`massive ${iconName} icon`} />
     </div>
     );
 };
