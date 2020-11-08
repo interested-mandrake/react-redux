@@ -1,3 +1,4 @@
+import './SeasonDisplay.css';
 import React from 'react';
 
 const seasonConfig = {
@@ -25,13 +26,14 @@ const SeasonDisplay = (props) => {
     
 
     return ( // we use curly braces any time referencing javascript variable, but we can also put any javascript expression in here!
-    <div>
-        <i className={`massive ${iconName} icon`} /> 
+    <div className={`season-display ${season}`}>
+        <i className={`icon-left massive ${iconName} icon`} /> 
         {/* the line above takes the value of the object 'iconName' and places it into the string 'icon' */}
         {/* basically we need to do this because we cannot pass a javascript variable into className, it must explicitly be a string. the technique we are using above is called 'template literals' */}
+        {/* the default behavior of the template literal is to take the expression and concatenate it with the string */}
         <h1>{season === 'winter' ? 'Burr, it is chilly' : 'Let\'s hit the beach'} 
         </h1>
-        <i className={`massive ${iconName} icon`} />
+        <i className={`icon-right massive ${iconName} icon`} />
     </div>
     );
 };
