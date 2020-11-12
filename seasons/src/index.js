@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SeasonDisplay from './SeasonDisplay'
+import Spinner from './Spinner'
 
 class App extends React.Component{
    
@@ -17,7 +18,8 @@ class App extends React.Component{
         console.log("The component was updated - it re-rendered");
     }
 
-    render(){     
+    // create helper function to avoid condition logic in render method (for future maintainability)
+    renderContent() {
         if(this.state.errorMessage && !this.state.latitude){ // if state has an error message and does not have a latitude property
             return <div>Error: {this.state.errorMessage}</div>
         }
@@ -26,7 +28,15 @@ class App extends React.Component{
             return <SeasonDisplay latitude={this.state.latitude}/>
         }
         
-        return <div>Loading...</div>
+        return <Spinner message="Please allow location permissions."/>
+    }
+
+    render(){     
+        return (
+            <div>
+                {this.renderContent()}
+            </div>
+        );
     }
 } 
 
