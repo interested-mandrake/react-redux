@@ -1,9 +1,7 @@
 import React from 'react';
 
 class SearchBar extends React.Component {
-    onInputChange() {
-
-    }
+    
 
     render() {
         return  (
@@ -11,7 +9,7 @@ class SearchBar extends React.Component {
                 <form className="ui form">
                     <div className="field">
                         <label>Image Search</label>
-                        <input type="text" onChange={this.onInputChange} /> {/* giving the function we defined as a callback function ( if we included parentheses, it would run on render, and we do not want that) */}
+                        <input type="text" onChange={(e) => console.log(e.target.value)} /> {/* giving the function we defined as a callback function ( if we included parentheses, it would run on render, and we do not want that) */}
                     </div>
                 </form>
             </div> 
